@@ -41,7 +41,7 @@ app.get('/user/:id',(req,res)=>{
 
 
 // add user using post
-app.post('/user',(req,res)=>{
+app.post('/user',ValidateUser,(req,res)=>{
     const {firstname,lastname,hobby} = req.body;
     const newUser ={
         id: Math.random()*10,
@@ -54,7 +54,7 @@ app.post('/user',(req,res)=>{
 })
 
 // update user using put
-app.put('/user/:id',(req,res)=>{
+app.put('/user/:id',ValidateUser,(req,res)=>{
     const id = req.params.id;
     const userId = user.find(u=>u.id === id);
     if(!userId){
